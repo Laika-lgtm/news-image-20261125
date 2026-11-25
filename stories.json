@@ -1,1 +1,389 @@
-{"also_on": [[16, "US set to unveil new tariffs", "Reuters"], [17, "Anthropic falls below IPO price", "Reuters"], [18, "Akalis, BJP reunite in Punjab", "Times of India"], [19, "Samajwadi names five UP candidates", "The Hindu"], [20, "Fastest List A double hundred", "Cricbuzz"], [21, "Settler attacks mar olive harvest", "UN News"], [22, "Guterres on Colombia peace deal", "UN News"], [23, "UN ramps up Gaza ceasefire support", "UN News"], [24, "DRC Ebola toll: 5,775 dead", "WHO"], [25, "EP debates just peace for Ukraine", "European Parliament"], [26, "EU Socialists on Frederiksen line", "PES"], [27, "Star system 'should not exist'", "SciTechDaily"], [28, "Spain votes in election on Sunday", "EU Insider"], [29, "Sweden's talks enter final week", "Nordic press"], [30, "Libya fine arts exhibition opens", "Panapress"], [31, "ECOWAS reviews single currency", "Panapress"], [32, "MSF suspends work in South Sudan", "MSF"], [33, "MSF condemns Mali clinic attacks", "MSF"], [34, "UN rights forum meets in Geneva", "UN"], [35, "Zimbabwean convicted over Ukraine", "Reuters"]], "cards": [{"deck": "A dawn deal shelved 2,212 job cuts, promised 500 hires and 3.5% pay.", "headline": "Seoul Metro strike called off at 2:40am", "kicker": "SEOUL, SOUTH KOREA  ·  TRANSPORT", "n": 4, "pin": [127.0, 37.5], "region": "EAST ASIA", "source": "Korea JoongAng Daily", "tag": "REPORTED"}, {"deck": "Wale and Albanese sign a pact making Australia the security partner of choice.", "headline": "Solomons signs historic treaty with Australia", "kicker": "CANBERRA, AUSTRALIA  ·  DIPLOMACY", "n": 5, "pin": [149.1, -35.3], "region": "OCEANIA", "source": "AAP", "tag": "REPORTED"}, {"deck": "Late-afternoon talks follow Trump's meetings with Putin and Xi.", "headline": "Trump to meet NATO chief Rutte at Mar-a-Lago", "kicker": "PALM BEACH, FLORIDA  ·  DIPLOMACY", "n": 6, "pin": [-80.0, 26.7], "region": "AMERICAS", "source": "White House", "tag": "AHEAD"}, {"deck": "Costa and von der Leyen host six candidate countries in Brussels.", "headline": "EU and Western Balkan leaders meet in Brussels", "kicker": "BRUSSELS, BELGIUM  ·  SUMMIT", "n": 7, "pin": [4.35, 50.85], "region": "EUROPE", "source": "European Council", "tag": "AHEAD"}, {"deck": "Kyiv says its forces struck a Russian cargo ship and a warship off Libya.", "headline": "Zelenskiy confirms Ukraine hit Russian ship", "kicker": "KYIV, UKRAINE  ·  WAR", "n": 8, "pin": [30.5, 50.45], "region": "EUROPE", "source": "Reuters", "tag": "REPORTED"}, {"deck": "The Council hears winter strikes on power and shipping threaten lives.", "headline": "UN warns on winter attacks on Ukraine grid", "kicker": "NEW YORK  ·  UNITED NATIONS", "n": 9, "pin": [-74.0, 40.7], "region": "EUROPE", "source": "UN News", "tag": "ONGOING"}, {"deck": "The Kremlin warns of a response after Ukrainian strikes on oil plants.", "headline": "Putin says retaliation 'inevitable' after oil-plant hits", "kicker": "MOSCOW, RUSSIA  ·  WAR", "n": 10, "pin": [37.6, 55.75], "region": "EUROPE", "source": "Reuters", "tag": "CLAIM"}, {"deck": "MEPs set out 2028-34 asylum and border money plans at 11:00 CET.", "headline": "EU Parliament briefs on migration and border funds", "kicker": "STRASBOURG, FRANCE  ·  MIGRATION", "n": 11, "pin": [7.75, 48.58], "region": "EUROPE", "source": "European Parliament", "tag": "REPORTED"}, {"deck": "Baghdad orders federal control of Kurdish-held fields; Kurds reject it.", "headline": "Iraq orders federal control of Kurdish oilfields", "kicker": "BAGHDAD, IRAQ  ·  ENERGY", "n": 12, "pin": [44.4, 33.3], "region": "MIDDLE EAST", "source": "Reuters", "tag": "REPORTED"}, {"deck": "Health workers leave a hospital in Akwe after three days under fire.", "headline": "WHO evacuates Ebola staff after days sheltering", "kicker": "ITURI, DR CONGO  ·  HEALTH", "n": 13, "pin": [29.5, 1.5], "region": "AFRICA", "source": "WHO", "tag": "REPORTED"}, {"deck": "Fighting blocks UN access, leaving 350,000 children without vaccination.", "headline": "Besieged Taiz misses measles shots for 350,000 children", "kicker": "TAIZ, YEMEN  ·  HEALTH", "n": 14, "pin": [44.0, 13.6], "region": "MIDDLE EAST", "source": "UN News", "tag": "ONGOING"}, {"deck": "The UN campaign runs to 10 December; 129 orange flags mark the daily toll.", "headline": "16 Days of Activism against gender violence begins", "kicker": "NEW YORK  ·  RIGHTS", "n": 15, "pin": [-74.0, 40.7], "region": "WORLD", "source": "UN Women", "tag": "REPORTED"}], "date": "Wednesday 25 November 2026", "date_check": "Left out because they happened on 24 November: Japan's censure motion agreed  ·  Yongbyon report  ·  FIFA files  ·  Kutryk's third child  ·  Huawei guilty verdict  ·  Houthi drone hits Riyadh tower  ·  COP31 closes with no deal  ·  Sweden sets 30 Nov PM vote  ·  UN femicide brief.  Not yet: Trump-Rutte outcome  ·  Balkan summit presser 19:15 CET  ·  Spain votes Sunday.", "heroes": [{"art": "selloff", "deck": "South Korea's Kospi fell 5.3% and Taiwan 5.1% as tariff threats and fading AI momentum hit chip shares; SoftBank lost 10%.", "headline": "AI stocks slide again as Asia opens lower", "kicker": "SEOUL, SOUTH KOREA  ·  MARKETS", "n": 1, "pin": [127.0, 37.5], "region": "EAST ASIA", "source": "Reuters", "tag": "REPORTED"}, {"art": "breach", "deck": "CNN reports intruders reached unclassified systems at the CIA and the spy chief's office, hitting an open-source analysis tool.", "headline": "CIA and spy chief hit by cyber breach", "kicker": "WASHINGTON  ·  CYBERSECURITY", "n": 2, "pin": [-77.0, 38.9], "region": "AMERICAS", "source": "CNN", "tag": "REPORTED"}, {"art": "fire", "deck": "The lightning-sparked blaze passed 10,130 hectares as an emergency warning told Killiecrankie, Leeka and Mt Tanner to shelter now.", "headline": "Flinders fire tops 10,000 ha; 'too late to leave'", "kicker": "FLINDERS ISLAND, TASMANIA  ·  BUSHFIRE", "n": 3, "pin": [148.0, -40.0], "region": "OCEANIA", "source": "Tasmania Fire Service", "tag": "ONGOING"}], "legend": "REPORTED: named outlet  ·  ONGOING: unfolding  ·  AHEAD: due today  ·  CLAIM: one side's word  ·  All times UTC", "masthead": "Wednesday 25 November 2026", "numbers": [["-5.3%", "Kospi fall in Seoul"], ["10,130 ha", "Flinders Island fire"], ["350,000", "children in Taiz, no vaccine"], ["129", "orange flags at UN HQ"], ["2,212", "job cuts shelved in Seoul"], ["5,775", "Ebola deaths in DR Congo"]], "regions": [["EAST ASIA", 3], ["OCEANIA", 2], ["SOUTH ASIA", 3], ["EUROPE", 9], ["AMERICAS", 4], ["MIDDLE EAST", 4], ["AFRICA", 7], ["WORLD", 3]], "sources": "Reuters  ·  CNN  ·  AAP  ·  UN News  ·  WHO  ·  European Council  ·  European Parliament  ·  Korea JoongAng Daily  ·  The Hindu  ·  MSF  ·  Panapress", "subhead": "AI selloff hits Asia at the open / CIA and spy chief's office hit by cyber breach / Fire emergency on Flinders Island", "timeline": [["00:08", "Seoul shares lower"], ["02:40", "Metro deal signed"], ["10:15", "Flinders warning"], ["11:00", "EP briefing"], ["17:00", "Balkans arrive"], ["21:00", "Trump meets Rutte"]]}
+{
+ "also_on": [
+  [
+   14,
+   "Seoul Metro strike called off",
+   "Korea JoongAng Daily"
+  ],
+  [
+   15,
+   "Trump to meet NATO chief Rutte",
+   "White House"
+  ],
+  [
+   16,
+   "EU, Balkan leaders meet in Brussels",
+   "European Council"
+  ],
+  [
+   17,
+   "UN warns on Ukraine grid attacks",
+   "UN News"
+  ],
+  [
+   18,
+   "Putin: retaliation 'inevitable'",
+   "Reuters"
+  ],
+  [
+   19,
+   "EP briefs on migration funds",
+   "European Parliament"
+  ],
+  [
+   20,
+   "Iraq takes Kurdish oilfields",
+   "Reuters"
+  ],
+  [
+   21,
+   "Taiz misses measles shots",
+   "UN News"
+  ],
+  [
+   22,
+   "16 Days against gender violence",
+   "UN Women"
+  ],
+  [
+   23,
+   "US set to unveil new tariffs",
+   "Reuters"
+  ],
+  [
+   24,
+   "Anthropic falls below IPO price",
+   "Reuters"
+  ],
+  [
+   25,
+   "Akalis, BJP reunite in Punjab",
+   "Times of India"
+  ],
+  [
+   26,
+   "Samajwadi names five UP candidates",
+   "The Hindu"
+  ],
+  [
+   27,
+   "Settler attacks mar olive harvest",
+   "UN News"
+  ],
+  [
+   28,
+   "Guterres on Colombia peace deal",
+   "UN News"
+  ],
+  [
+   29,
+   "UN ramps up Gaza ceasefire support",
+   "UN News"
+  ],
+  [
+   30,
+   "Spain votes in election on Sunday",
+   "EU Insider"
+  ],
+  [
+   31,
+   "EP debates just peace for Ukraine",
+   "European Parliament"
+  ],
+  [
+   32,
+   "Zimbabwean convicted over Ukraine",
+   "Reuters"
+  ],
+  [
+   33,
+   "Sweden's talks enter final week",
+   "Nordic press"
+  ],
+  [
+   34,
+   "MSF suspends work in South Sudan",
+   "MSF"
+  ],
+  [
+   35,
+   "MSF condemns Mali clinic attacks",
+   "MSF"
+  ],
+  [
+   36,
+   "UN rights forum meets in Geneva",
+   "UN"
+  ]
+ ],
+ "cards": [
+  {
+   "art": "cricket",
+   "deck": "Sooryavanshi's 28 sixes: the fastest List A 200 ever.",
+   "headline": "Boy of 15 hits 204 off 53 balls",
+   "kicker": "DOHA, QATAR  ·  SPORT",
+   "n": 4,
+   "pin": [
+    51.5,
+    25.3
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "Cricbuzz · BBC",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "breach_small",
+   "deck": "Intruders reached unclassified CIA systems.",
+   "headline": "CIA hit by cyberattack on unclassified system",
+   "kicker": "LANGLEY, US  ·  SECURITY",
+   "n": 5,
+   "pin": [
+    -77.0,
+    38.9
+   ],
+   "region": "AMERICAS",
+   "source": "CNN",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "leak",
+   "deck": "Leaked Rosstat records put the toll near half a million.",
+   "headline": "Russia's own data show ~490,000 war dead",
+   "kicker": "MOSCOW, RUSSIA  ·  WAR DATA",
+   "n": 6,
+   "pin": [
+    37.6,
+    55.75
+   ],
+   "region": "EUROPE",
+   "source": "BBC · Mediazona",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "pact",
+   "deck": "Australia becomes the security partner of choice.",
+   "headline": "Australia signs Solomon Islands security pact",
+   "kicker": "CANBERRA  ·  DIPLOMACY",
+   "n": 7,
+   "pin": [
+    149.1,
+    -35.3
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "AAP",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "apology",
+   "deck": "Marles says sorry, 34 years after the ban was lifted.",
+   "headline": "Australia apologises to LGBTQ veterans",
+   "kicker": "CANBERRA  ·  SOCIETY",
+   "n": 8,
+   "pin": [
+    149.1,
+    -35.3
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "Reuters",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "skyline",
+   "deck": "Chen Jining probed as Xi's drive hits the top ranks.",
+   "headline": "Shanghai party chief probed",
+   "kicker": "SHANGHAI, CHINA  ·  POLITICS",
+   "n": 9,
+   "pin": [
+    121.5,
+    31.2
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "Reuters",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "heat",
+   "deck": "Highest since records began in 2016; old high 2,985.",
+   "headline": "Record 5,258 heat deaths in England",
+   "kicker": "ENGLAND, UK  ·  CLIMATE",
+   "n": 10,
+   "pin": [
+    -0.1,
+    51.5
+   ],
+   "region": "EUROPE",
+   "source": "UKHSA · BBC",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "court",
+   "deck": "Jury convicts over Iran business; appeal follows.",
+   "headline": "Huawei guilty on 10 of 12 counts; it will appeal",
+   "kicker": "BROOKLYN, US  ·  COURTS",
+   "n": 11,
+   "pin": [
+    -74.0,
+    40.7
+   ],
+   "region": "AMERICAS",
+   "source": "Reuters · Bloomberg",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "fire_small",
+   "deck": "Blaze passed 10,130 hectares; towns told to shelter.",
+   "headline": "Flinders fire tops 10,000 ha; 'too late to leave'",
+   "kicker": "FLINDERS ISLAND  ·  BUSHFIRE",
+   "n": 12,
+   "pin": [
+    148.0,
+    -40.0
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "Tasmania Fire Service",
+   "tag": "ONGOING"
+  },
+  {
+   "art": "ships",
+   "deck": "Ukraine hit a Russian cargo ship and a warship.",
+   "headline": "'We'll keep sinking Russian ships,' Kyiv vows",
+   "kicker": "KYIV, UKRAINE  ·  WAR",
+   "n": 13,
+   "pin": [
+    30.5,
+    50.45
+   ],
+   "region": "EUROPE",
+   "source": "Reuters · AP",
+   "tag": "REPORTED"
+  }
+ ],
+ "date": "Wednesday 25 November 2026",
+ "date_check": "Wires read to 17:30 UTC, Wednesday 25 November 2026. Every story here happened or was first reported on 25 November in at least one time zone. Left out as other days' news: Japan's censure motion  ·  Yongbyon report  ·  FIFA files  ·  COP31 close  ·  Sweden sets 30 Nov PM vote  ·  UN femicide brief  ·  First PIF tower strike (Tue)  ·  Senegal AFCON ruling (Tue).",
+ "heroes": [
+  {
+   "art": "rocket",
+   "deck": "Tang Hongbo, Wu Yi and Muhammad Zeeshan Ali dock at Tiangong hours later.",
+   "headline": "Shenzhou-24 lifts off with Pakistan's first astronaut",
+   "kicker": "JIUQUAN, CHINA  ·  SPACE",
+   "n": 1,
+   "pin": [
+    100.3,
+    40.9
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "Xinhua · CMSA",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "hospital",
+   "deck": "Staff sheltered three days in Akwe before evacuation; 5,775 have died.",
+   "headline": "WHO pulls Ebola teams out of Congo hospital",
+   "kicker": "AKWE, DR CONGO  ·  HEALTH",
+   "n": 2,
+   "pin": [
+    29.5,
+    1.5
+   ],
+   "region": "AFRICA",
+   "source": "WHO",
+   "tag": "REPORTED"
+  },
+  {
+   "art": "selloff",
+   "deck": "Samsung -9.9%, SK Hynix -11.1%; Nikkei -2.8%, Taiex -5.0%.",
+   "headline": "AI rout sinks Kospi 6.2% as SoftBank slides 14.8%",
+   "kicker": "SEOUL, SOUTH KOREA  ·  MARKETS",
+   "n": 3,
+   "pin": [
+    127.0,
+    37.5
+   ],
+   "region": "ASIA-PACIFIC",
+   "source": "AP · Reuters",
+   "tag": "REPORTED"
+  }
+ ],
+ "legend": "REPORTED: named outlet  ·  ONGOING: unfolding  ·  AHEAD: due today  ·  CLAIM: one side's word  ·  All times UTC",
+ "masthead": "Wednesday 25 November 2026",
+ "numbers": [
+  [
+   "490,334",
+   "Russian war dead in leaked data"
+  ],
+  [
+   "204",
+   "runs off 53 balls"
+  ],
+  [
+   "5,775",
+   "Ebola deaths in DR Congo"
+  ],
+  [
+   "-6.2%",
+   "Kospi fall in Seoul"
+  ],
+  [
+   "5,258",
+   "heat deaths in England"
+  ],
+  [
+   "10,130 ha",
+   "Flinders Island fire"
+  ]
+ ],
+ "regions": [
+  [
+   "ASIA-PACIFIC",
+   10
+  ],
+  [
+   "EUROPE",
+   10
+  ],
+  [
+   "MIDDLE EAST",
+   4
+  ],
+  [
+   "AFRICA",
+   4
+  ],
+  [
+   "AMERICAS",
+   6
+  ],
+  [
+   "WORLD",
+   2
+  ]
+ ],
+ "sources": "Reuters  ·  AP  ·  BBC  ·  CNN  ·  AAP  ·  Xinhua  ·  CMSA  ·  WHO  ·  UKHSA  ·  UN News  ·  European Council  ·  European Parliament  ·  Korea JoongAng Daily  ·  The Hindu  ·  MSF  ·  Cricbuzz  ·  Bloomberg",
+ "subhead": "Shenzhou-24 carries Pakistan's first astronaut / WHO pulls Ebola teams out of Congo / AI rout sinks Kospi 6.2%",
+ "timeline": [
+  [
+   "00:18",
+   "Shenzhou-24 lifts off"
+  ],
+  [
+   "02:40",
+   "Metro deal signed"
+  ],
+  [
+   "10:15",
+   "Flinders warning"
+  ],
+  [
+   "11:00",
+   "EP briefing"
+  ],
+  [
+   "17:00",
+   "Balkans arrive"
+  ],
+  [
+   "21:00",
+   "Trump meets Rutte"
+  ]
+ ]
+}

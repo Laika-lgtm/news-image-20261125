@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Render the Wednesday 25 November 2026 world-news front page.
 
-Reads stories.json (35 date-audited stories) and draws one 1024x1024
-newspaper-style PNG with three illustrated heroes, a 12-card grid, a
-dotted world map, a 20-item 'also on' strip, a day-in-numbers box and a
+Reads stories.json (36 date-audited stories) and draws one 1024x1024
+newspaper-style PNG with three illustrated heroes, a 10-card grid, a
+dotted world map, a 23-item 'also on' strip, a day-in-numbers box and a
 DATE CHECK footer. Deterministic: fixed fonts, no randomness, no network.
 """
 import json
@@ -31,6 +31,7 @@ REGION_COLORS = {
     "MIDDLE EAST": (179, 64, 42),
     "AFRICA": (63, 125, 58),
     "AMERICAS": (107, 79, 161),
+    "OCEANIA": (0, 120, 110),
     "WORLD": (85, 85, 85),
 }
 TAG_COLORS = {
@@ -122,6 +123,12 @@ def draw_selloff(draw, box):
         draw.ellipse([px - 3, py - 3, px + 3, py + 3], fill=(255, 214, 90))
     draw.text((x0 + 8, y0 + 6), "-6.2%", font=font(SANS_B, 22),
               fill=(255, 214, 90))
+    # small closing-index table along the bottom (like the winning pages)
+    f_tab = font(SANS_B, 10)
+    draw.text((x0 + 8, y1 - 26), "KOSPI -6.2  ·  TAIEX -4.8  ·  NIKKEI -2.8",
+              font=f_tab, fill=(255, 255, 255))
+    draw.text((x0 + 8, y1 - 13), "HSI -1.1  ·  HYNIX -11.1  ·  SAMSUNG -9.9",
+              font=f_tab, fill=(255, 214, 90))
 
 
 def draw_breach(draw, box):
@@ -255,8 +262,61 @@ def draw_hospital(draw, box):
               fill=(26, 26, 26))
 
 
+def draw_tankers(draw, box):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    # dusk sky bands over a dark strait
+    bands = [(58, 32, 54), (122, 54, 44), (198, 96, 44), (238, 150, 70)]
+    bh = h // len(bands)
+    for i, col in enumerate(bands):
+        draw.rectangle([x0, y0 + i * bh, x1, y0 + (i + 1) * bh], fill=col)
+    # low sun
+    draw.ellipse([x0 + w * 0.68, y0 + h * 0.30, x0 + w * 0.80, y0 + h * 0.48],
+                 fill=(255, 220, 140))
+    # sea
+    draw.rectangle([x0, y0 + h * 0.62, x1, y1], fill=(24, 38, 62))
+    for wy in (0.70, 0.80, 0.90):
+        draw.line([(x0 + 6, y0 + h * wy), (x1 - 6, y0 + h * wy)],
+                  fill=(52, 74, 106), width=1)
+    # two burning tankers (hulls low in the frame, flames + smoke above)
+    for sx, sw in [(0.06, 0.40), (0.52, 0.38)]:
+        hx0, hx1 = x0 + w * sx, x0 + w * (sx + sw)
+        hy = y0 + h * 0.66
+        draw.rectangle([hx0, hy, hx1, hy + h * 0.12], fill=(32, 32, 36))
+        draw.rectangle([hx0 + w * 0.05, hy - h * 0.07, hx0 + w * 0.12,
+                        hy], fill=(200, 200, 190))
+        # deck containers
+        for cx in (0.16, 0.24, 0.32):
+            draw.rectangle([hx0 + w * cx, hy - h * 0.06,
+                            hx0 + w * (cx + 0.06), hy], fill=(150, 60, 50))
+        # flame plume + smoke column
+        fx = (hx0 + hx1) / 2
+        for fxi, fh in [(fx - 14, 30), (fx, 42), (fx + 14, 28)]:
+            draw.polygon([(fxi - 10, hy), (fxi - 3, hy - fh),
+                          (fxi + 2, hy - fh // 2), (fxi + 6, hy - fh - 6),
+                          (fxi + 10, hy)], fill=(255, 190, 60))
+            draw.polygon([(fxi - 5, hy), (fxi, hy - fh // 2),
+                          (fxi + 5, hy)], fill=(255, 110, 30))
+        for sxi, syi, sr in [(fx - 8, hy - 52, 12), (fx + 4, hy - 66, 15),
+                             (fx + 12, hy - 80, 10)]:
+            draw.ellipse([sxi - sr, syi - sr // 2, sxi + sr, syi + sr // 2],
+                         fill=(70, 66, 62))
+    # floating mine markers (spiked circles) between the ships
+    for mx, my in [(0.47, 0.78), (0.44, 0.88)]:
+        cx, cy = x0 + w * mx, y0 + h * my
+        for ang in range(0, 360, 45):
+            import math as _m
+            x2 = cx + 8 * _m.cos(_m.radians(ang))
+            y2 = cy + 8 * _m.sin(_m.radians(ang))
+            draw.line([(cx, cy), (x2, y2)], fill=(200, 200, 190), width=2)
+        draw.ellipse([cx - 5, cy - 5, cx + 5, cy + 5], fill=(40, 40, 44),
+                     outline=(200, 200, 190))
+    draw.text((x0 + 8, y0 + 6), "BRENT $91.08", font=font(SANS_B, 16),
+              fill=(255, 255, 255))
+
+
 ART = {"selloff": draw_selloff, "breach": draw_breach, "fire": draw_fire,
-       "rocket": draw_rocket, "hospital": draw_hospital}
+       "rocket": draw_rocket, "tankers": draw_tankers}
 
 # ---------------------------------------------------------------- small scenes
 # Compact illustrations for the 2x5 card grid (boxes ~189x52). Every
@@ -489,10 +549,200 @@ def draw_ships(draw, box):
     draw.ellipse([ex - 7, ey - 7, ex + 7, ey + 7], fill=(255, 220, 120))
 
 
-ART_SMALL = {"cricket": draw_cricket, "breach_small": draw_breach_small,
-             "leak": draw_leak, "pact": draw_pact, "apology": draw_apology,
-             "skyline": draw_skyline, "heat": draw_heat, "court": draw_court,
-             "fire_small": draw_fire_small, "ships": draw_ships}
+def draw_port(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(64, 84, 110))
+    draw.rectangle([x0, y0 + h * 0.62, x1, y1], fill=(22, 52, 84))
+    # pier + containers
+    draw.rectangle([x0, y0 + h * 0.58, x1, y0 + h * 0.66], fill=(90, 86, 76))
+    for i, col in enumerate([(214, 48, 49), (240, 170, 60), (31, 122, 140)]):
+        cx = x0 + w * (0.10 + i * 0.20)
+        draw.rectangle([cx, y0 + h * 0.38, cx + w * 0.16, y0 + h * 0.58],
+                       fill=col)
+    # crane
+    draw.line([(x0 + w * 0.72, y0 + h * 0.10), (x0 + w * 0.72, y0 + h * 0.62)],
+              fill=(220, 220, 210), width=3)
+    draw.line([(x0 + w * 0.72, y0 + h * 0.10), (x0 + w * 0.95, y0 + h * 0.22)],
+              fill=(220, 220, 210), width=2)
+    # smoke plume + jet silhouette
+    for sx, sy, sr in [(0.24, 0.22, 10), (0.30, 0.12, 13), (0.38, 0.20, 9)]:
+        draw.ellipse([x0 + w * sx - sr, y0 + h * sy - sr // 2,
+                      x0 + w * sx + sr, y0 + h * sy + sr // 2],
+                     fill=(120, 116, 110))
+    draw.polygon([(x0 + w * 0.86, y0 + h * 0.30), (x0 + w * 0.97, y0 + h * 0.34),
+                  (x0 + w * 0.86, y0 + h * 0.38)], fill=(30, 30, 34))
+
+
+def draw_garment(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(18, 90, 96))
+    # fabric rolls on the wall
+    for i, col in enumerate([(214, 48, 90), (255, 214, 90), (90, 200, 170),
+                             (240, 240, 235)]):
+        rx = x0 + w * (0.06 + i * 0.12)
+        draw.rectangle([rx, y0 + h * 0.10, rx + w * 0.08, y0 + h * 0.42],
+                       fill=col)
+    # sewing machine silhouettes on a table
+    draw.rectangle([x0, y0 + h * 0.72, x1, y0 + h * 0.80], fill=(120, 90, 60))
+    for mx in (0.30, 0.62):
+        bx = x0 + w * mx
+        draw.rectangle([bx, y0 + h * 0.44, bx + w * 0.20, y0 + h * 0.52],
+                       fill=(40, 40, 44))
+        draw.rectangle([bx + w * 0.16, y0 + h * 0.52, bx + w * 0.20,
+                        y0 + h * 0.72], fill=(40, 40, 44))
+        draw.ellipse([bx + w * 0.02, y0 + h * 0.52, bx + w * 0.08,
+                      y0 + h * 0.64], fill=(200, 200, 190))
+    draw.text((x0 + w * 0.80, y0 + h * 0.08), "+36%", font=font(SANS_B, 13),
+              fill=(255, 255, 255))
+
+
+def draw_mine(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(38, 28, 22))
+    # tunnel mouth
+    draw.pieslice([x0 + w * 0.30, y0 + h * 0.10, x0 + w * 0.70, y0 + h * 1.30],
+                  180, 360, fill=(12, 10, 8))
+    draw.arc([x0 + w * 0.30, y0 + h * 0.10, x0 + w * 0.70, y0 + h * 1.30],
+             180, 360, fill=(150, 120, 80), width=2)
+    # headlamp glows inside the dark
+    for lx, ly in [(0.42, 0.45), (0.52, 0.60), (0.60, 0.42)]:
+        cx, cy = x0 + w * lx, y0 + h * ly
+        draw.ellipse([cx - 8, cy - 8, cx + 8, cy + 8], fill=(255, 220, 120))
+        draw.ellipse([cx - 3, cy - 3, cx + 3, cy + 3], fill=(255, 255, 255))
+    # rescue cage + cable
+    draw.line([(x0 + w * 0.86, y0), (x0 + w * 0.86, y0 + h * 0.55)],
+              fill=(180, 180, 170), width=2)
+    draw.rectangle([x0 + w * 0.80, y0 + h * 0.55, x0 + w * 0.92, y0 + h * 0.78],
+                   outline=(255, 220, 120), width=2)
+
+
+def draw_refinery(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(16, 18, 34))
+    for sx, sy in [(0.08, 0.12), (0.35, 0.08), (0.9, 0.15)]:
+        draw.ellipse([x0 + w * sx - 1, y0 + h * sy - 1,
+                      x0 + w * sx + 1, y0 + h * sy + 1], fill=(255, 255, 255))
+    # distillation towers
+    for tx, th in [(0.14, 0.55), (0.38, 0.72), (0.60, 0.60)]:
+        bx = x0 + w * tx
+        draw.rectangle([bx, y0 + h * (0.95 - th), bx + w * 0.10, y0 + h * 0.95],
+                       fill=(70, 74, 88))
+        draw.rectangle([bx - 2, y0 + h * (0.95 - th) - 4, bx + w * 0.10 + 2,
+                        y0 + h * (0.95 - th)], fill=(120, 126, 140))
+    # flames on two stacks + smoke
+    for fx, fh in [(0.43, 0.30), (0.65, 0.38)]:
+        px = x0 + w * fx
+        fy = y0 + h * 0.32
+        draw.polygon([(px - 8, fy), (px - 2, fy - h * fh), (px + 8, fy)],
+                     fill=(255, 200, 60))
+        draw.polygon([(px - 4, fy), (px, fy - h * fh * 0.6), (px + 4, fy)],
+                     fill=(255, 120, 30))
+    for sx, sy, sr in [(0.44, 0.12, 9), (0.50, 0.06, 11), (0.66, 0.10, 8)]:
+        draw.ellipse([x0 + w * sx - sr, y0 + h * sy - sr // 2,
+                      x0 + w * sx + sr, y0 + h * sy + sr // 2],
+                     fill=(90, 86, 80))
+
+
+def draw_energy(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(43, 94, 167))
+    # house silhouette
+    draw.polygon([(x0 + w * 0.10, y0 + h * 0.52), (x0 + w * 0.30, y0 + h * 0.30),
+                  (x0 + w * 0.50, y0 + h * 0.52)], fill=(235, 232, 222))
+    draw.rectangle([x0 + w * 0.12, y0 + h * 0.52, x0 + w * 0.48, y0 + h * 0.88],
+                   fill=(225, 222, 210))
+    draw.rectangle([x0 + w * 0.26, y0 + h * 0.62, x0 + w * 0.34, y0 + h * 0.88],
+                   fill=(90, 60, 30))
+    # bill with the new cap figure
+    draw.rectangle([x0 + w * 0.58, y0 + h * 0.16, x0 + w * 0.94, y0 + h * 0.84],
+                   fill=(255, 255, 255))
+    draw.text((x0 + w * 0.62, y0 + h * 0.24), "£2,166",
+              font=font(SANS_B, 13), fill=(163, 22, 33))
+    for li in range(3):
+        ly = y0 + h * (0.52 + li * 0.12)
+        draw.line([(x0 + w * 0.62, ly), (x0 + w * 0.90, ly)],
+                  fill=(180, 176, 164), width=2)
+    # lightning bolt
+    draw.polygon([(x0 + w * 0.56, y0 + h * 0.10), (x0 + w * 0.50, y0 + h * 0.34),
+                  (x0 + w * 0.56, y0 + h * 0.34), (x0 + w * 0.52, y0 + h * 0.52),
+                  (x0 + w * 0.62, y0 + h * 0.28), (x0 + w * 0.56, y0 + h * 0.28)],
+                 fill=(255, 214, 90))
+
+
+def draw_market(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(30, 34, 44))
+    # supermarket facade
+    draw.rectangle([x0 + w * 0.06, y0 + h * 0.30, x0 + w * 0.72, y0 + h * 0.88],
+                   fill=(240, 200, 60))
+    draw.rectangle([x0 + w * 0.06, y0 + h * 0.30, x0 + w * 0.72, y0 + h * 0.44],
+                   fill=(31, 58, 138))
+    draw.text((x0 + w * 0.10, y0 + h * 0.32), "SUPER",
+              font=font(SANS_B, 10), fill=(255, 255, 255))
+    for i in range(3):
+        wx = x0 + w * (0.12 + i * 0.20)
+        draw.rectangle([wx, y0 + h * 0.52, wx + w * 0.14, y0 + h * 0.80],
+                       fill=(90, 120, 150))
+    # police tape + light bar
+    draw.rectangle([x0, y0 + h * 0.86, x1, y0 + h * 0.94], fill=(255, 214, 90))
+    for tx in range(0, int(w), 14):
+        draw.line([(x0 + tx, y0 + h * 0.94), (x0 + tx + 7, y0 + h * 0.86)],
+                  fill=(26, 26, 26), width=2)
+    draw.rectangle([x0 + w * 0.80, y0 + h * 0.55, x0 + w * 0.86, y0 + h * 0.60],
+                   fill=(214, 48, 49))
+    draw.rectangle([x0 + w * 0.88, y0 + h * 0.55, x0 + w * 0.94, y0 + h * 0.60],
+                   fill=(43, 94, 167))
+
+
+def draw_women(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(74, 32, 86))
+    # bar chart of the toll
+    for i, bh in enumerate([0.30, 0.42, 0.55, 0.72]):
+        bx = x0 + w * (0.10 + i * 0.16)
+        draw.rectangle([bx, y0 + h * (0.92 - bh), bx + w * 0.11,
+                        y0 + h * 0.92], fill=(214, 120, 200))
+    # three figures holding hands
+    for fx in (0.74, 0.82, 0.90):
+        cx, cy = x0 + w * fx, y0 + h * 0.55
+        draw.ellipse([cx - 4, cy - 16, cx + 4, cy - 8], fill=(255, 220, 190))
+        draw.line([(cx, cy - 8), (cx, cy + 8)], fill=(255, 220, 190), width=3)
+        draw.line([(cx, cy + 8), (cx - 5, cy + 16)], fill=(255, 220, 190),
+                  width=2)
+        draw.line([(cx, cy + 8), (cx + 5, cy + 16)], fill=(255, 220, 190),
+                  width=2)
+    draw.text((x0 + w * 0.08, y0 + h * 0.06), "47,000",
+              font=font(SANS_B, 13), fill=(255, 255, 255))
+
+
+def draw_met(draw, box):
+    x0, y0, x1, y1, w, h = _frac(box)
+    draw.rectangle(box, fill=(24, 42, 72))
+    # skyline
+    for bx, bw, bh in [(0.06, 0.14, 0.45), (0.24, 0.18, 0.65),
+                       (0.46, 0.12, 0.50)]:
+        draw.rectangle([x0 + w * bx, y0 + h * (0.95 - bh),
+                        x0 + w * (bx + bw), y0 + h * 0.95], fill=(52, 64, 92))
+        for wy in (0.30, 0.60):
+            draw.rectangle([x0 + w * (bx + 0.03),
+                            y0 + h * (0.95 - bh + wy * bh),
+                            x0 + w * (bx + bw - 0.03),
+                            y0 + h * (0.95 - bh + wy * bh) + 3],
+                           fill=(255, 200, 90))
+    # police badge shield
+    cx, cy = x0 + w * 0.80, y0 + h * 0.48
+    draw.polygon([(cx - 14, cy - 16), (cx + 14, cy - 16), (cx + 12, cy + 4),
+                  (cx, cy + 18), (cx - 12, cy + 4)], fill=(255, 214, 90),
+                 outline=(255, 255, 255))
+    draw.text((cx - 7, cy - 10), "MET", font=font(SANS_B, 10),
+              fill=(26, 26, 26))
+
+
+ART_SMALL = {"port": draw_port, "garment": draw_garment,
+             "mine": draw_mine, "refinery": draw_refinery,
+             "energy": draw_energy, "market": draw_market,
+             "women": draw_women, "met": draw_met,
+             "pact": draw_pact, "apology": draw_apology}
 
 # ---------------------------------------------------------------- world map
 CONTINENTS = [
@@ -572,12 +822,12 @@ def draw_map(draw, box, pins):
     for num, (plon, plat) in pins:
         px = x0 + (plon + 170) / 350 * mw
         py = y0 + (76 - plat) / 132 * mh
-        r = 8
+        r = 10
         draw.ellipse([px - r, py - r, px + r, py + r], fill=RED,
                      outline=(255, 255, 255), width=1)
-        fnt = font(SANS_B, 9)
+        fnt = font(SANS_B, 11)
         tw = draw.textlength(str(num), font=fnt)
-        draw.text((px - tw / 2, py - 6), str(num), font=fnt,
+        draw.text((px - tw / 2, py - 7), str(num), font=fnt,
                   fill=(255, 255, 255))
 
 
@@ -596,7 +846,7 @@ def main():
     y = 10
     f_top = font(SANS_B, 12)
     d.text((M, y), "THE WORLD IN ONE DAY", font=f_top, fill=INK)
-    mid = "36 STORIES  ·  6 REGIONS  ·  ONE DAY"
+    mid = "36 STORIES  ·  7 REGIONS  ·  ONE DAY"
     d.text((W / 2 - d.textlength(mid, font=f_top) / 2, y), mid,
            font=f_top, fill=RED)
     right = "WEDNESDAY 25 NOVEMBER 2026"
@@ -666,10 +916,6 @@ def main():
         ART[hero["art"]](d, (hx + 1, hy + 5, hx + hw - 1, hy + 112))
         d.text((hx + 10, hy + 114), str(hero["n"]), font=font(SERIF_B, 18),
                fill=col)
-        ill = "illustration"
-        f_ill = font(SANS, 9)
-        d.text((hx + hw - 10 - d.textlength(ill, font=f_ill), hy + 120),
-               ill, font=f_ill, fill=MUTED)
         # kicker
         f_kick = font(SANS_B, 10)
         d.text((hx + 10, hy + 138), hero["kicker"], font=f_kick, fill=col)
@@ -731,9 +977,9 @@ def main():
 
     # ---- bottom band: map | also on
     by0 = gy + 2 * ch + 6 + 8
-    bh = 160
-    # map panel
-    mx, mw = M, 300
+    bh = 152
+    # map panel (wider than r2, pins clearly numbered)
+    mx, mw = M, 360
     d.rectangle([mx, by0, mx + mw, by0 + bh], fill=PANEL, outline=PANEL_EDGE)
     f_sec = font(SANS_B, 11)
     d.text((mx + 10, by0 + 8), "WHERE IT HAPPENED", font=f_sec, fill=INK)
@@ -746,9 +992,12 @@ def main():
         if (lon, lat) not in seen:
             seen.add((lon, lat))
             pins.append((story["n"], (lon, lat)))
-    draw_map(d, (mx + 8, by0 + 40, mx + mw - 8, by0 + bh - 24), pins)
+    draw_map(d, (mx + 8, by0 + 40, mx + mw - 8, by0 + bh - 36), pins)
+    d.text((mx + 10, by0 + bh - 30),
+           "1 Jiuquan  ·  2 Seoul  ·  3 Hormuz  ·  4 Hodeidah  ·  5 Dhaka  ·  6 Pongkor",
+           font=font(SANS, 9), fill=MUTED)
     d.text((mx + 10, by0 + bh - 18),
-           "1 Jiuquan  ·  2 Akwe  ·  3 Seoul  ·  4 Doha",
+           "7 Samara  ·  8 London  ·  9 Cartagena  ·  10 NYC  ·  11 Honiara  ·  12 Canberra  ·  13 London",
            font=font(SANS, 9), fill=MUTED)
 
     # also-on panel (23 stories, 3 columns)
@@ -770,25 +1019,25 @@ def main():
             raise ValueError(f"also-on item {num} too long: {text!r}")
         d.text((ix + nw, iy), text, font=f_item, fill=INK)
 
-    # ---- date check
+    # ---- date check (3 lines: honest exclusions + "Not yet")
     dy = by0 + bh + 8
-    d.rectangle([M, dy, W - M, dy + 34], fill=(238, 232, 218),
+    d.rectangle([M, dy, W - M, dy + 46], fill=(238, 232, 218),
                 outline=PANEL_EDGE)
     f_dc = font(SANS_B, 10)
     d.text((M + 10, dy + 4), "DATE CHECK", font=f_dc, fill=RED)
     f_dct = font(SANS, 10)
     lines = wrap(d, data["date_check"], f_dct, CW - 20)
     ly = dy + 15
-    for ln in lines[:2]:
+    for ln in lines[:3]:
         d.text((M + 10, ly), ln, font=f_dct, fill=(60, 58, 52))
         ly += 10
 
     # ---- footer
-    fy = dy + 38
+    fy = dy + 50
     f_f = font(SANS, 9)
     d.text((M, fy), data["sources"], font=f_f, fill=MUTED)
     d.text((M, fy + 12), data["legend"], font=f_f, fill=MUTED)
-    tail = "Every story dated 25 Nov 2026 (UTC)  ·  Illustrations are drawings"
+    tail = "Featured stories dated 25 Nov 2026 (UTC)  ·  Illustrations are drawings"
     d.text((W - M - d.textlength(tail, font=f_f), fy + 12), tail,
            font=f_f, fill=MUTED)
 

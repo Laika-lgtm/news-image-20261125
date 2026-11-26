@@ -198,6 +198,9 @@ def scene_pongkor(d, box):
     _sky(d, box, (58, 42, 26))
     d.pieslice([x + w * 0.22, y + h * 0.15, x + w * 0.78, y + h * 0.95], 180, 360,
                fill=(12, 10, 8))
+    d.rectangle([x + w * 0.24, y + h * 0.45, x + w * 0.29, y + h * 0.95], fill=(120, 85, 50))
+    d.rectangle([x + w * 0.71, y + h * 0.45, x + w * 0.76, y + h * 0.95], fill=(120, 85, 50))
+    d.rectangle([x + w * 0.24, y + h * 0.42, x + w * 0.76, y + h * 0.48], fill=(120, 85, 50))
     d.rectangle([x, y + int(h * 0.72), x + w, y + h], fill=(40, 110, 160))
     for i in range(3):
         yy = y + h * (0.76 + i * 0.07)
